@@ -3,9 +3,9 @@ import Header from './components/Header'
 import StateSelection from './components/StateSelection'
 import RightsCard from './components/RightsCard'
 import ScriptGenerator from './components/ScriptGenerator'
-import RecordButton from './components/RecordButton'
+import EnhancedRecordButton from './components/EnhancedRecordButton'
 import ContactList from './components/ContactList'
-import SubscriptionModal from './components/SubscriptionModal'
+import EnhancedSubscriptionModal from './components/EnhancedSubscriptionModal'
 import { Shield, FileText, Mic, Users, Settings } from 'lucide-react'
 
 function App() {
@@ -82,10 +82,11 @@ function App() {
         )
       case 'record':
         return (
-          <RecordButton 
+          <EnhancedRecordButton 
             state={selectedState}
             isPremium={user.subscriptionStatus === 'premium'}
             onPremiumRequired={showPremiumPrompt}
+            user={user}
           />
         )
       case 'contacts':
@@ -198,7 +199,7 @@ function App() {
       <div className="hidden sm:block h-16"></div>
 
       {showSubscriptionModal && (
-        <SubscriptionModal
+        <EnhancedSubscriptionModal
           onClose={() => setShowSubscriptionModal(false)}
           onUpgrade={handleSubscriptionUpgrade}
         />
